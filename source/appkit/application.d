@@ -38,6 +38,8 @@ interface NSApplication : NSResponder
 
     bool setActivationPolicy(NSApplicationActivationPolicy activationPolicy) @selector("setActivationPolicy:");
     void activateIgnoringOtherApps(bool flag) @selector("activateIgnoringOtherApps:");
+
+    void run() @selector("run");
 }
 
 __gshared NSApplication NSApp;

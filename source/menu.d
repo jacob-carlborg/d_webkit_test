@@ -11,7 +11,7 @@ NSMenu mainMenu()
 {
     auto tree = [
         "Apple" : [
-            NSMenuItem.alloc.init("Quit", "terminate:", "q")
+            NSMenuItem.alloc.init("Quit", "stop:", "q")
         ]
     ];
 

@@ -59,7 +59,7 @@ extern (Objective-C) interface AppDelegate : NSApplicationDelegate
 
     static bool applicationShouldTerminateAfterLastWindowClosed(AppDelegate self, SEL sel, NSNotification notification)
     {
-        return true;
+        return false;
     }
 
     static void applicationDidFinishLaunching(AppDelegate self, SEL sel, NSNotification notification)

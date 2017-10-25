@@ -1,0 +1,9 @@
+name "webkit_test"
+description "A minimal D application."
+authors "Jacob Carlborg"
+copyright "Copyright © 2017, Jacob Carlborg"
+license "proprietary"
+
+lflags "-framework" "Cocoa" \
+       "-framework" "WebKit" \
+       "-sectcreate" "__TEXT" "__info_plist" "Info.plist"

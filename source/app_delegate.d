@@ -24,6 +24,7 @@ import web_kit.web_view_configuration;
 
 import util;
 import view_controller;
+import menu;
 
 extern (Objective-C) interface AppDelegate : NSApplicationDelegate
 {
@@ -64,6 +65,8 @@ extern (Objective-C) interface AppDelegate : NSApplicationDelegate
     static void applicationDidFinishLaunching(AppDelegate self, SEL sel, NSNotification notification)
     {
         println("applicationDidFinishLaunching");
+
+        NSApp.menu = mainMenu();
 
         immutable style = NSWindowStyleMask.resizable |
             NSWindowStyleMask.closable |

@@ -1,5 +1,7 @@
 module appkit.application;
 
+import appkit.responder;
+
 import foundation.notification;
 import foundation.util;
 
@@ -18,7 +20,7 @@ enum NSApplicationActivationPolicy : ptrdiff_t {
     prohibited
 };
 
-interface NSApplication
+interface NSApplication : NSResponder
 {
     interface Class
     {

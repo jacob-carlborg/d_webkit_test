@@ -1,5 +1,7 @@
 module ui;
 
+import dummy_symbols;
+
 import appkit.application;
 
 import app_delegate;
@@ -8,6 +10,7 @@ import view_controller;
 
 extern (C) void openUi()
 {
+    NSApp = NSApplication.shared_;
     setupSubclasses();
 
     auto delegate_ = AppDelegate.alloc.init;
@@ -16,5 +19,6 @@ extern (C) void openUi()
     NSApp.delegate_ = delegate_;
 
     NSApp.setActivationPolicy(NSApplicationActivationPolicy.regular);
+    import core.stdc.stdio : printf; printf("openUi\n");
     NSApp.run();
 }

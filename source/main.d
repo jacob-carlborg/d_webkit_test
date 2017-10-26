@@ -1,12 +1,9 @@
 module main;
 
-import std.stdio : println = writeln;
-
 import ui;
 
-void main()
+extern (C) int main(int, char**)
 {
     openUi();
-
-	println("Edit source/app.d to start your project.");
+    return 0;
 }

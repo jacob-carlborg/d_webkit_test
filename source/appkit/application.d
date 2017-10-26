@@ -44,10 +44,10 @@ interface NSApplication : NSResponder
 
 __gshared NSApplication NSApp;
 
-shared static this()
-{
-    NSApp = NSApplication.shared_;
-}
+// shared static this()
+// {
+//     NSApp = NSApplication.shared_;
+// }
 
 interface NSApplicationDelegate
 {

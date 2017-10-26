@@ -14,11 +14,12 @@ mixin template MetaclassTrait()
 
     extern (D) private static Class classof()
     {
-        import std.exception : enforce;
         enum name = __traits(identifier, Parent);
 
-        return objc_lookUpClass(name)
-            .enforce("Failed to lookup class: " ~ name);
+        auto cls = objc_lookUpClass(name);
+        assert(cls, "Failed to lookup class: " ~ name);
+
+        return cls;
     }
 }
 

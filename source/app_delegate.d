@@ -1,7 +1,6 @@
 module app_delegate;
 
-import std.stdio : println = writeln;
-import std.exception;
+import core.stdc.stdio : printf;
 
 import appkit.application;
 import appkit.color;
@@ -64,7 +63,7 @@ extern (Objective-C) interface AppDelegate : NSApplicationDelegate
 
     static void applicationDidFinishLaunching(AppDelegate self, SEL sel, NSNotification notification)
     {
-        println("applicationDidFinishLaunching");
+        printf("applicationDidFinishLaunching\n");
 
         NSApp.menu = mainMenu();
 

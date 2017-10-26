@@ -1,6 +1,6 @@
 module setup;
 
-import std.math : log2;
+import core.stdc.math : log2;
 
 import appkit.window;
 
@@ -14,22 +14,43 @@ import util;
 
 void setupSubclasses()
 {
-    registerClass("AppDelegate", "NSObject", [
+    objc_method[2] methodsAppDelegate = [
         method!(AppDelegate.applicationDidFinishLaunching, "applicationDidFinishLaunching:"),
         method!(AppDelegate.applicationShouldTerminateAfterLastWindowClosed, "applicationShouldTerminateAfterLastWindowClosed:")
-    ],
-    [
-        objc_ivar("window", "^v", cast(int) log2(NSWindow.sizeof), NSWindow.sizeof),
-        objc_ivar("controller", "^v", cast(int) log2(ViewController.sizeof), ViewController.sizeof),
-    ]);
+    ];
 
-    registerClass("ViewController", "NSViewController", [
+    objc_ivar[2] ivarsAppDelegate = [
+        objc_ivar("window", "^v", cast(int) log2(NSWindow.sizeof), NSWindow.sizeof),
+        objc_ivar("controller", "^v", cast(int) log2(ViewController.sizeof), ViewController.sizeof)
+    ];
+
+    registerClass("AppDelegate", "NSObject", methodsAppDelegate, ivarsAppDelegate);
+
+    objc_method[2] methodsViewController = [
         method!(ViewController.loadView, "loadView"),
         method!(ViewController.viewDidLoad, "viewDidLoad")
-    ],
-    [
-        objc_ivar("webView", "^v", cast(int) log2(WKWebView.sizeof), WKWebView.sizeof),
-    ]);
+    ];
+
+    objc_ivar[1] ivarsViewController = [
+        objc_ivar("webView", "^v", cast(int) log2(WKWebView.sizeof), WKWebView.sizeof)
+    ];
+
+    registerClass("ViewController", "NSViewController", methodsViewController, ivarsViewController);
+
+    // registerClass("AppDelegate", "NSObject", [
+    //     method!(AppDelegate.applicationDidFinishLaunching, "applicationDidFinishLaunching:"),
+    //     method!(AppDelegate.applicationShouldTerminateAfterLastWindowClosed, "applicationShouldTerminateAfterLastWindowClosed:")
+    // ], [
+    //     objc_ivar("window", "^v", cast(int) log2(NSWindow.sizeof), NSWindow.sizeof),
+    //     objc_ivar("controller", "^v", cast(int) log2(ViewController.sizeof), ViewController.sizeof),
+    // ]);
+    //
+    // registerClass("ViewController", "NSViewController", [
+    //     method!(ViewController.loadView, "loadView"),
+    //     method!(ViewController.viewDidLoad, "viewDidLoad")
+    // ], [
+    //     objc_ivar("webView", "^v", cast(int) log2(WKWebView.sizeof), WKWebView.sizeof),
+    // ]);
 }
 
 void registerClass(const char* name, const char* superClassName, objc_method[] methods, objc_ivar[] ivars = [])

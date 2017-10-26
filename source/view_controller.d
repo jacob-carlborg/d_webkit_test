@@ -1,6 +1,6 @@
 module view_controller;
 
-import std.stdio : println = writeln;
+import core.stdc.stdio : printf;
 
 import appkit.application;
 import appkit.color;
@@ -46,7 +46,7 @@ extern (Objective-C) interface ViewController : NSViewController
 
     static void loadView(ViewController self, SEL sel)
     {
-        println("loadView");
+        printf("loadView\n");
 
         auto frame = NSMakeRect(0, 0, 0, 0);
 
@@ -65,7 +65,7 @@ extern (Objective-C) interface ViewController : NSViewController
 
     static void viewDidLoad(ViewController self, SEL sel)
     {
-        println("viewDidLoad");
+        printf("viewDidLoad\n");
 
         assert(self.view, "ViewController.view null");
         assert(self.webView, "ViewController.webView null");

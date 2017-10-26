@@ -124,7 +124,7 @@ Class object_setClass (id object, Class cls);
 Ivar object_getInstanceVariable (id obj, const(char)* name, void** outValue);
 Ivar object_setInstanceVariable (id obj, const(char)* name, void* value);
 SEL sel_registerName (const(char)* str);
-id objc_msgSend (id theReceiver, SEL theSelector, ...);
+// id objc_msgSend (id theReceiver, SEL theSelector, ...);
 void objc_msgSend_stret(void* stretAddr, id theReceiver, SEL theSelector, ...);
 id objc_msgSendSuper (objc_super* superr, SEL op, ...);
 Method class_getClassMethod (Class aClass, SEL aSelector);

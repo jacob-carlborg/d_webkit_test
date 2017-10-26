@@ -37,7 +37,9 @@ interface NSApplication : NSResponder
     void delegate_(NSApplicationDelegate) @selector("setDelegate:");
 
     bool setActivationPolicy(NSApplicationActivationPolicy activationPolicy) @selector("setActivationPolicy:");
-    void activateIgnoringOtherApps(bool flag) @selector("activateIgnoringOtherApps:");
+
+    // use `int` as workaround for https://github.com/ldc-developers/ldc/issues/2387
+    void activateIgnoringOtherApps(int flag) @selector("activateIgnoringOtherApps:");
 
     void run() @selector("run");
 }

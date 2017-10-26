@@ -18,7 +18,9 @@ interface NSView
     void addSubview(NSView view) @selector("addSubview:");
 
     bool wantsLayer() @selector("wantsLayer");
-    void wantsLayer(bool value) @selector("setWantsLayer:");
+    // use `int` as workaround for https://github.com/ldc-developers/ldc/issues/2387
+    void wantsLayer(int value) @selector("setWantsLayer:");
+
     CALayer layer() @selector("layer");
     void uiDelegate(NSObject) @selector("setUIDelegate:");
 }

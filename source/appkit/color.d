@@ -1,6 +1,7 @@
 module appkit.color;
 
 import core_graphics.color;
+import foundation.util;
 
 extern (Objective-C):
 
@@ -10,12 +11,7 @@ interface NSColor
 
     interface Class
     {
-        extern (C) pragma(mangle, "objc_lookUpClass") static typeof(this) objc_lookUpClass(const(char)* name);
-
-        private static Class classof()
-        {
-            return objc_lookUpClass(This.stringof);
-        }
+        mixin MetaclassTrait;
 
         This alloc() @selector("alloc");
 

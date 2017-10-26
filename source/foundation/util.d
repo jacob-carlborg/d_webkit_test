@@ -9,14 +9,16 @@ mixin template MetaclassTrait()
 
     alias Parent = Alias!(__traits(parent, typeof(this)));
 
-    extern (C) pragma(mangle, "objc_lookUpClass")
-        static typeof(this) objc_lookUpClass(const(char)* name);
+    // extern (C) pragma(mangle, "objc_lookUpClass")
+    //     static typeof(this) objc_lookUpClass(const(char)* name);
 
     extern (D) private static Class classof()
     {
+        import objc.objc : objc_lookUpClass;
+
         enum name = __traits(identifier, Parent);
 
-        auto cls = objc_lookUpClass(name);
+        auto cls = cast(typeof(this)) objc_lookUpClass(name);
         assert(cls, "Failed to lookup class: " ~ name);
 
         return cls;
